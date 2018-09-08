@@ -1,4 +1,4 @@
-MLInvoice Vagrant
+MLInvoice Docker
 =================
 
 This repository provides an [MLInvoice](https://github.com/emaijala/MLinvoice) setup in Docker container. It can be used to easily install MLInvoice for testing or further use on any computer that supports Docker.
