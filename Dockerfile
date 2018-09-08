@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         unzip \
         zlib1g-dev libcurl4-openssl-dev libmcrypt-dev libxslt1-dev \
         mariadb-common mariadb-server mariadb-client \
-        nano vim \
+        nano vim
 
 RUN docker-php-ext-install -j"$(nproc)" xsl intl mysqli mcrypt zip && \
     a2enmod rewrite && \
