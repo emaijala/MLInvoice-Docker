@@ -1,53 +1,35 @@
-MLInvoice Docker
-=================
+MLInvoice
+=========
 
-This repository provides an [MLInvoice](https://github.com/emaijala/MLinvoice) setup in Docker container. It can be used to easily install MLInvoice for testing or further use on any computer that supports Docker.
-
-All applications apart from the prerequisites are installed in the virtual machine, which means the actual machine including its operating system settings and applications is kept intact.
+This repository provides an [MLInvoice](https://github.com/emaijala/MLinvoice) setup in Docker container.
 
 *N.B.* MLInvoice's database is stored in Docker volume /var/lib/mysql. Make sure to not delete it to keep your data intact.
 
-Prerequisites
--------------
-
-- Enough disk space for the Docker container. Maybe ~1 gigabyte.
-- Internet connection so thatthe required files can be downloaded. A fast connection helps for a fast installation.
-- [Docker](https://www.docker.com/)
-- Basic command prompt (terminal) usage
 
 Installation
 ------------
 
-1. Install the prerequisites.
-2. Download this repository as a zip file: https://github.com/emaijala/MLInvoice-Docker/archive/master.zip
-3. Unpack the zip file somewhere. Note that you need to find it in the command line. The following steps assume it's a Windows machine and the location is C:\MLInvoice.
-4. Open Command Prompt: In Windows, bring up the Start menu and enter "command" ("komento" in Finnish) to search for it. Click when found.
-5. Navigate to the forementioned directory by typing the following commands:
+1. Download the image:
 
-       c:
-       cd \MLInvoice
+        docker pull emaijala/mlinvoice
 
-6. Create the Docker image:
-
-       docker build -t mlinvoice .
-
-7. Docker will now create an image. This may take a good while depending on the speed of the internet connection and the computer.
-8. Create and run a container:
+2. Create and run a container:
 
         docker run -it -p 8000:80 mlinvoice
 
-9. On the first run, the above will create the database and install MLInvoice. When the installation is completed, navigate to http://localhost:8000/ to start using MLInvoice.
-10. If you want to stop the container, run the following command:
+3. On the first run, the above will create the database and install MLInvoice. When the installation is completed, navigate to http://localhost:8000/ to start using MLInvoice.
+
+4. If you want to stop the container, run the following command:
 
         docker stop <container>
 
     Where <container> is the container ID.
 
-11. To start the container again, run the following command:
+5. To start the container again, run the following command:
 
         docker start <container>
 
-12. If you want to get rid of MLInvoice, destroy the container:
+6. If you want to get rid of MLInvoice, destroy the container (THIS WILL DESTROY everything including MLInvoice's database):
 
         docker rm <container>
 
