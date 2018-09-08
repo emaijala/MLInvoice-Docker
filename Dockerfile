@@ -20,8 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         nano vim
 
 RUN docker-php-ext-install -j"$(nproc)" xsl intl mysqli mcrypt zip && \
-    a2enmod rewrite && \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    a2enmod rewrite
 
 COPY httpd_mlinvoice.conf.sample /etc/apache2/sites-available/000-default.conf
 COPY docker-run.sh /usr/local

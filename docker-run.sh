@@ -84,7 +84,6 @@ if [ ! -f /usr/local/mlinvoice/README.md ]; then
     unzip -o /tmp/mlinvoice.zip
     cd mlinvoice
 
-    COMPOSER_ALLOW_SUPERUSER=1 composer install --no-interaction --no-plugins --no-scripts
     chown -R www-data:www-data /usr/local/mlinvoice
     rm -rf /usr/local/mlinvoice/config.php
     sed -i -r "s/define\('_DB_SERVER_', '.*?'\);/define('_DB_SERVER_', '127.0.0.1');/" /usr/local/mlinvoice/config.php.sample
