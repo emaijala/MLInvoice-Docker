@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:7.4-apache
 MAINTAINER "Ere Maijala <ere@labs.fi>"
 
 ENV MYSQL_ROOT_PASSWORD=raparperi
@@ -15,11 +15,11 @@ EXPOSE 80
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         unzip \
-        zlib1g-dev libcurl4-openssl-dev libmcrypt-dev libxslt1-dev libgd3 libpng-dev libjpeg-dev \
+        zlib1g-dev libcurl4-openssl-dev libxslt1-dev libgd3 libpng-dev libjpeg-dev libzip-dev \
         mariadb-common mariadb-server mariadb-client \
         nano vim
 
-RUN docker-php-ext-install -j"$(nproc)" xsl intl mysqli mcrypt zip gd && \
+RUN docker-php-ext-install -j"$(nproc)" xsl intl mysqli zip gd && \
     a2enmod rewrite
 
 COPY httpd_mlinvoice.conf.sample /etc/apache2/sites-available/000-default.conf
