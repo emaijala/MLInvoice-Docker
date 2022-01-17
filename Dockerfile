@@ -1,5 +1,5 @@
 FROM php:7.4-apache
-MAINTAINER "Ere Maijala <ere@labs.fi>"
+LABEL org.opencontainers.image.authors="Ere Maijala <ere@labs.fi>"
 
 ENV MYSQL_ROOT_PASSWORD=raparperi
 ENV MYSQL_USER=mlinvoice
