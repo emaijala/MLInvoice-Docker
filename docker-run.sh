@@ -76,7 +76,7 @@ fi
 if [ ! -f /usr/local/mlinvoice/README.md ]; then
     cd /tmp
     echo "Checking MLInvoice version information"
-    ZIP=`curl -s https://www.labs.fi/mlinvoice_version.php?channel=production | grep package | sed -e 's/.*\(http.*\)".*/\1/'`
+    ZIP=`curl -s 'https://www.labs.fi/mlinvoice_version.php?channel=production&filename=1'`
     rm -rf *.zip
     echo "Downloading $ZIP"
     curl $ZIP > mlinvoice.zip
