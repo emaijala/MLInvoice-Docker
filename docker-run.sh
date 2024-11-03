@@ -17,17 +17,20 @@ if [ ! -d "$MYSQL_BASEDIR/data" ]; then
 
     echo 'Initializing database'
     mysql_install_db --datadir="$MYSQL_BASEDIR/data"
+    chown -R mysql $MYSQL_BASEDIR/data
 
     # Run MariaDB
     echo 'Starting MariaDB'
     /usr/bin/mysqld_safe --datadir="$MYSQL_BASEDIR/data" --timezone=${DATE_TIMEZONE} &
     pid="$!"
-    echo "Started MariaDB $pid"
+    echo "Started MariaDB (pid $pid)"
 
     mysql=( mysql -uroot )
 
-    for i in {30..0}; do
-        if echo 'SELECT 1' | "${mysql[@]}" &> /dev/null; then
+    for i in {15..0}; do
+        ${mysql[@]} -e exit &> /dev/null
+        STATUS=$?
+        if (( $STATUS == 0 )); then
             break
         fi
         echo 'MariaDB is starting up...'

@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.3-apache
 LABEL org.opencontainers.image.authors="Ere Maijala <ere@labs.fi>"
 
 ENV MYSQL_ROOT_PASSWORD=raparperi
